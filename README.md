@@ -12,11 +12,17 @@ total 3880
 
 
 # 1. Fetching a website resource and convert it to text; serve it to the customer
-Server can be found:  ssh -i /Users/e.ausente/ausente-f5-account-key-value-pair.pem ubuntu@18.143.74.2
-Manner of accessing: https://public.kushikimi.xyz/nginxorg
+Server can be found: 
+```
+ssh -i /Users/e.ausente/ausente-f5-account-key-value-pair.pem ubuntu@18.143.74.2
+```
 
+Manner of accessing: 
+```
+https://public.kushikimi.xyz/nginxorg
+```
 
-/etc/nginx/conf.d/bpi.conf
+sudo cat /etc/nginx/conf.d/bpi.conf
 ```
 js_path /etc/nginx/conf.d/js/;
 js_import main from fetch_https.js;
