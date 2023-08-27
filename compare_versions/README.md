@@ -1,4 +1,4 @@
-## This function fetches the local NGINX version, fetches the latest NGINX version from a different endpoint, compares the versions, and returns a message indicating the version status.
+## This function fetches the local NGINX version, fetches the latest NGINX version from the official nginx site, compares the versions, and returns a message indicating the version status.
 - Server is listening on port 8080
 - Server is 10.201.10.149
 
