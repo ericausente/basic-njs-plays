@@ -26,11 +26,11 @@ async function fetchAndCompareVersions(r) {
         r.return(500, `Failed to fetch local NGINX version: ${e}`);
     }
 }
-```
+
 // Export the function
 export default { fetchAndCompareVersions };
 
-
+```
 
 
 ## With Comments
