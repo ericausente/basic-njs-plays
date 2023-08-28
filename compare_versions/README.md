@@ -52,3 +52,7 @@ export default { fetchAndCompareVersions };
 # curl http://10.201.10.149:8080/compare_versions
 Your version (1.21.6) is behind the latest (1.24.0)
 ```
+
+# Notes 
+
+You can also use `r.variables.nginx_version` to fetch the local version. This approach leverages built-in NGINX variables and eliminates the need to explicitly enable the API, making it more convenient. Additionally, it works for both NGINX Plus and the open-source version.
