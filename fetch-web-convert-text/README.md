@@ -71,17 +71,12 @@ nginx.conf Configuration File
     js_fetch_trusted_certificate /etc/nginx/njs/http/certs/ISRG_Root_X1.pem;: Specifies a trusted certificate file that Nginx should use when making HTTPS requests from JavaScript.
 
 example.js JavaScript File
-
+```
     async function fetch(r) {: Defines an asynchronous function named fetch. It takes a request object r, representing the incoming HTTP request.
-
     let reply = await ngx.fetch('https://nginx.org/');: Makes an asynchronous HTTP request to 'https://nginx.org/' using Nginx's ngx.fetch function, and stores the response in reply.
-
     let text = await reply.text();: Reads the response body as text and stores it in text.
-
     let footer = "----------NGINX.ORG-----------";: Defines a string footer to be added at the beginning and end of the response.
-
     r.return(200, ${footer}\n${text.substring(0, 200)} ...${text.length - 200} left...\n${footer});: Constructs a response string that includes the footer, the first 200 characters of text, and a note about how many characters are left. It then returns this response with a 200 OK status code.
-
     export default {fetch};: Exports the fetch function so it can be imported by Nginx.
-
+```
     
