@@ -103,7 +103,7 @@ To use this setup, you'll need to ensure NGINX is compiled with the njs module e
 To test the enriched API endpoint, send a request to /enriched. NGINX will route the request through the JavaScript function defined in mashup.js, which fetches additional data from the Tumblr API, enriches the response, and returns the enriched response to the clie
 
 
-Operational Flow
+## Operational Flow
 
 - A client makes a request to the /enriched endpoint on your NGINX server
 - NGINX matches this request to the location block configured for /enriched
@@ -112,6 +112,7 @@ Operational Flow
 - Upon successfully fetching and parsing the external data, the function enriches the original response data and sends the enriched response back to the client.
 
 
+## Sample output:
 ```
 $ curl http://localhost/enriched
 {"original":"This is the original response data","external":"pups and love"}
