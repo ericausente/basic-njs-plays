@@ -156,7 +156,7 @@ This script is intended for demonstration purposes and may not be suitable for p
 Clone the Repository:
 ```
 git clone https://github.com/ericausente/basic-njs-plays.git
-cd simple-json-xml
+cd basic-njs-plays/simple-json-xml/
 ```
 
 ## Set up a Docker backend that provides the sample ADC response, follow these steps:
@@ -251,7 +251,7 @@ CMD [ "npm", "start" ]
 Build the Docker image:
 
 ```
-docker build -t adc-backend .
+docker build -t adc-backend backend/
 ```
 
 Run the Docker container:
@@ -260,11 +260,13 @@ docker run -d -p 8080:8080 --name adc-backend adc-backend
 ```
 
 
-For the nginx run with Docker:
+# For the nginx, run with Docker:
 
 ```
 docker run -it -p 80:80 -v $PWD/etc/nginx.conf:/etc/nginx/nginx.conf -v $PWD/njs/:/etc/nginx/njs/ --rm nginx:stable
 ```
+
+# Testing 
 
 Test the Endpoint:
 
@@ -274,3 +276,45 @@ curl -X POST http://localhost/api -H "Content-Type: application/json" -d '{"requ
 ```
 
 
+Sample output: 
+
+From postman: 
+```
+curl --location 'http://localhost/api' \
+--header 'Content-Type: application/json' \
+--data '{"request_id": "12345", "user": "john_doe", "action": "get_pricing"}'
+```
+Response:
+```
+{
+    "status": "success",
+    "price": "100.00"
+}
+```
+
+Logs:
+```
+root@7TGF1T3:/mnt/c/Users/ausente/basic-njs-plays/simple-json-xml# docker run -it -p 80:80 -v $PWD/etc/nginx.conf:/etc/nginx/nginx.conf -v $PWD/njs/:/etc/nginx/njs/ --rm nginx:stable
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2024/06/17 03:23:14 [error] 29#29: *2 js: Raw request body: {"request_id": "12345", "user": "john_doe", "action": "get_pricing"}
+2024/06/17 03:23:14 [error] 29#29: *2 js: Parsing JSON body
+2024/06/17 03:23:14 [error] 29#29: *2 js: Converting JSON to XML
+2024/06/17 03:23:14 [error] 29#29: *2 js: Sending XML to ADC: <request><request_id>12345</request_id><user>john_doe</user><action>get_pricing</action></request>
+2024/06/17 03:23:14 [error] 29#29: *2 js: Received response from ADC
+2024/06/17 03:23:14 [error] 29#29: *2 js: Response body:
+    <response>
+        <status>success</status>
+        <price>100.00</price>
+    </response>
+
+2024/06/17 03:23:14 [error] 29#29: *2 js: Converted JSON response: {"status":"success","price":"100.00"}
+172.17.0.1 - - [17/Jun/2024:03:23:14 +0000] "POST /api HTTP/1.1" 200 37 "-" "PostmanRuntime/7.39.0"
+```
