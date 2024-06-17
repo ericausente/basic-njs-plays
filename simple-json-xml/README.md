@@ -318,3 +318,25 @@ root@7TGF1T3:/mnt/c/Users/ausente/basic-njs-plays/simple-json-xml# docker run -i
 2024/06/17 03:23:14 [error] 29#29: *2 js: Converted JSON response: {"status":"success","price":"100.00"}
 172.17.0.1 - - [17/Jun/2024:03:23:14 +0000] "POST /api HTTP/1.1" 200 37 "-" "PostmanRuntime/7.39.0"
 ```
+
+
+## Steps to Clean Up Docker Containers
+
+### Stop the NGINX Container:
+        If you started the NGINX container interactively (with -it), you can stop it by pressing Ctrl+C in the terminal where it is running. If it’s running in detached mode, use the docker stop command.
+        Assuming it’s running interactively, press Ctrl+C to stop it
+
+### Stop and Remove the Backend Container:
+        First, find the container ID or name of the backend container using docker ps.
+        Use docker stop to stop the container, and then docker rm to remove it.
+
+```
+docker stop adc-backend
+docker rm adc-backend
+```
+
+### Verify that Containers are Removed
+Use docker ps -a to list all containers and ensure that the containers are stopped and removed.
+```
+docker ps -a
+```
