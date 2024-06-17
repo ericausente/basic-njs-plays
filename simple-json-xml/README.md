@@ -1,10 +1,10 @@
+# Overview
+
 This repository contains a simple implementation of a JSON to XML converter using NGINX and njs. The script parses JSON data from the request body, converts it to XML, sends it to an external service, and then converts the XML response back to JSON.
 
-#Overview
-
 The NGINX configuration (nginx.conf) sets up a server that listens for POST requests at the /api endpoint. The NJS script (http.js) handles the conversion between JSON and XML, communication with the external service, and response processing.
-NGINX Configuration (nginx.conf)
 
+NGINX Configuration (nginx.conf)
 ```
 load_module /usr/lib/nginx/modules/ngx_http_js_module.so;
 
