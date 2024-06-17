@@ -150,22 +150,22 @@ This script is intended for demonstration purposes and may not be suitable for p
 
 
 
-
 # How to Use
 
 
 Clone the Repository:
-```git clone https://github.com/yourusername/json-to-xml-converter.git
-cd json-to-xml-converter
+```
+git clone https://github.com/ericausente/basic-njs-plays.git
+cd simple-json-xml
+```
 
-
- Set up a Docker backend that provides the sample ADC response, follow these steps:
+## Set up a Docker backend that provides the sample ADC response, follow these steps:
 
 Create a simple backend server using Express.js:
 Dockerize the Express.js application:
 Run the Docker container:
 
-## Step 1: Create the Express.js Backend
+### Step 1: Create the Express.js Backend
 
 First, set up a simple Express.js application that responds with the sample XML.
 
@@ -220,7 +220,7 @@ app.listen(PORT, () => {
 });
 ```
 
-## Step 2: Dockerize the Express.js Application
+### Step 2: Dockerize the Express.js Application
 
 Dockerfile:
 ```
@@ -246,7 +246,7 @@ EXPOSE 8080
 CMD [ "npm", "start" ]
 ```
 
-## Step 3: Build and Run the Docker Container
+### Step 3: Build and Run the Docker Container
 
 Build the Docker image:
 
